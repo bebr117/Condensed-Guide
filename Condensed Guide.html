@@ -1,0 +1,436 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title> Condensed Guide to Something </title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+	<meta charset="UTF-8" />
+	<meta name="description" content="HTML, CSS, and Javascript mini guides." />
+	<style type="text/css">
+	body{
+		background-color: lightskyblue;
+	}
+	p, h1, h2{
+		text-align: center;
+		color: black;
+	}
+	#title-h1{
+		color: black;
+	}
+	p.descriptor{
+		font-size: 20px;
+		padding-bottom: 5px;
+		border-bottom: 1px dashed black;
+		color: black;
+	}
+	div.section-header{
+		font-size: 25px;
+		text-align: center;
+		color: white;
+	}
+	#html-head{
+		background-color: blue;
+	}
+	#css-head{
+		background-color: red;
+	}
+	#js-head{
+		background-color: green; 
+	}
+	div.section-content{
+		background-color: yellow;
+	}
+	#main-table{
+		width: 100%;
+		margin: auto;
+		border-collapse: separate;
+		border-spacing: 10px;
+	}
+	#main-table>.row{
+		position: relative;
+	}
+	.table-header{
+		text-align: center;
+	}
+	.row{
+		margin: auto;
+	}
+	.ex-table{
+		border-collapse: collapse;
+		position: relative;
+		width: 100%;
+	}
+	.ex-table td,th{
+		border: 2px solid black;
+		text-align: center;
+	}
+	.name-col{
+		width: 5%;
+	}
+	.desc-col{
+		width: 25%;
+	}
+	.ex-col{
+		width: 70%;
+	}
+	td:nth-child(3){
+		width: 70%;
+		text-align: left;
+	}
+	textarea{
+		display: block;
+		margin: auto;
+	}
+	</style>
+	<style id="custom-style"></style>
+	<script type="text/javascript" src="../jQuery.js"></script>
+	<script type="text/javascript">
+
+	function customCSS(thing){
+		$('#custom-style').html($(thing).val());
+	}
+
+	$(document).ready(function(){
+		$("#html-template-code").text(
+			"<!DOCTYPE HTML>"+
+			"\n<html>"+
+			"\n\t<head>"+
+			"\n\t\t<!--Insert scripts, stylesheets,etc. here-->\n"+
+			"\n\t\t<title> Insert Title Here </title>"+
+			"\n\t</head>"+
+			"\n\t<body>"+
+			"\n\t\t<!-- Put the text and stuff that will be displayed on the page here! -->"+
+			"\n\t</body>"+
+			"\n</html>"
+			);
+		$(".slide-out").hide();
+		$("[btn]").click(function(event){
+			if ($(this).attr('chosen') == 'true'){
+				$("[btn]").attr('chosen', 'false');
+				$(".slide-out").slideUp(500);
+			} else {
+				$("[btn]").attr('chosen', 'false');
+				$(this).attr('chosen', 'true');
+				var nextTabID = $(this).attr('btn').split(" ");
+				$(".slide-out").slideUp(500);
+				setTimeout(function(){
+					for (i=0;i<nextTabID.length;i++){
+    					$("#"+nextTabID[i]).slideDown(500);
+					}
+				}, 500);
+			}
+		})
+	});
+	</script>
+</head>
+<body>
+	<div id="body">
+		<h1 id="title-h1"> Condensed Guide to Stuff </h1>
+		<h2> Click to expand! </h2>
+		<br />
+
+		<div id="main-table"> 
+			<div class="row" id="html-row">
+				<div class="col-md-12">
+					<div class="row section-header" id="html-head">
+						<div class="col-md-12">
+							HTML
+						</div>
+					</div>
+					<div class="row section-content" id="html-content">
+						<div class="col-md-12" id="html-description">
+							<p class="descriptor"><b>H</b>yper<b>T</b>ext <b>M</b>arkup <b>L</b>anguage is a markup language used to structure websites.</p>
+						</div>
+						<div class="row table-header col-md-12" id="html-info-titles">
+							<div class="col-md-4" btn="html-template"> Template for HTML code </div>
+							<div class="col-md-4" btn="html-head-tags"> Useful header tags </div>
+							<div class="col-md-4" btn="html-body-tags"> Useful body tags </div>
+						</div>
+						<div class="col-md-12 slide-out" id="html-template">
+							<pre id="html-template-code"></pre>
+						</div>
+						<div class="row col-md-12 slide-out" id="html-head-tags">
+							<table id="html-head-tags-table" class="ex-table">
+								<tr>
+									<th class="name-col">Tag</th>
+									<th class="desc-col">Usage</th>
+									<th class="ex-col">Example</th>
+								</tr>
+								<tr>
+									<td>&lt;title&gt;</td>
+									<td>Assigns a title to the webpage; you can see it on the top of your browser.</td>
+									<td><pre>&lt;title&gt; Condensed Guide to Something &lt;/title&gt;</pre></td>
+								</tr>
+								<tr>
+									<td>&lt;script&gt;</td>
+									<td>Used to embed or include a (server-side) script, usually javascript.</td>
+									<td>
+										<pre>&lt;script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"&gt;&lt;/script&gt;</pre>
+									</td>
+								</tr>
+								<tr>
+									<td>&lt;style&gt;</td>
+									<td>Used to embed a CSS stylesheet</td>
+									<td>
+										<pre>&lt;style type="text/css"&gt;
+	body{
+	background-color: lightskyblue;
+}
+&lt;/style&gt;</pre>
+									</td>
+								</tr>
+								<tr>
+									<td>&lt;link&gt;</td>
+									<td>Used to include external documents, such as stylesheets.</td>
+									<td>
+										<pre>&lt;link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"&gt;&lt;/link&gt;</pre>
+									</td>
+								</tr>
+								<tr>
+									<td>&lt;meta&gt;</td>
+									<td>Used to give the browser information about the webpage, such as the language, key words, and text encoding. Meta tags have little effect on the layout of the webpage.</td>
+									<td>
+										<pre>&lt;meta charset="UTF-8"&gt;
+&lt;meta name="description" content="HTML, CSS, and Javascript mini guides."&gt;</pre></td>
+										</tr>
+									</table>
+								</div>
+								<div class="col-md-12 slide-out" id="html-body-tags">
+									<table id="html-body-tags-table" class="ex-table">
+										<tr>
+											<th class="name-col">Tag</th>
+											<th class="desc-col">Usage</th>
+											<th class="ex-col">Example</th>
+										</tr>
+										<tr>
+											<td>&lt;h1&gt;<br />&lt;h2&gt;<br />...<br />&lt;h6&gt;</td>
+											<td>Different sizes of headers; h1 is the largest, and h6 is the smallest.</td>
+											<td><pre>&lt;h1&gt; Condensed Guide to Stuff &lt;/h1&gt;
+												&lt;h2&gt; Click to expand! &lt;/h2&gt;</pre></td>
+											</tr>
+											<tr>
+												<td>&lt;p&gt;</td>
+												<td>Used for typical, paragraph text; text-heavy websites are usually made primarily of these.</td>
+												<td><pre>&lt;p&gt;HyperText Markup Language is a markup language used to structure websites.&lt;/p&gt;</div></pre></td>
+											</tr>
+											<tr>
+												<td>&lt;span&gt;</td>
+												<td>Used to style small portions of text in specific ways, in combination with CSS.</td>
+												<td><pre>&lt;span class="bold"&gt;H&lt;/span&gt;yper&lt;span class="bold"&gt;T&lt;/span&gt;ext &lt;span class="bold"&gt;M&lt;/span&gt;arkup &lt;span class="bold"&gt;L&lt;/span&gt;anguage</pre></td>
+											</tr>
+											<tr>
+												<td>&lt;div&gt;</td>
+												<td>Used to divide the webpage into sections, making it easier to create a layout properly.</td>
+												<td style="text-align: center;">Right click. View source. Weep.</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row" id="css-row">
+							<div class="col-md-12">
+								<div class="row section-header" id="css-head">
+									<div class="col-md-12">
+										CSS
+									</div>
+								</div>
+								<div class="row section-content" id="css-content">
+									<div class="col-md-12" id="css-description"><p class="descriptor"><b>C</b>ascading <b>S</b>tyle <b>S</b>heets are a type of file which specifies formatting in HTML webpages.</p>
+									</div>
+									<div class="row table-header col-md-12" id="css-info-titles">
+										<div class="col-md-4" btn="css-sample-code"> Sample HTML </div>
+										<div class="col-md-4" btn="css-sample-code css-selectors"> CSS selectors </div></a>
+										<div class="col-md-4" btn="css-sample-code css-properties"> Useful CSS properties </div>
+									</div>
+									<div class="col-md-12 slide-out" id="css-sample-code" style="margin: 5px;">
+										<div id="special" style="border: 1px solid black"> This is a div with id "special"! <br />
+											<p class="colorful"> This is a p with class "colorful" </p>
+											<p> This is another p with no class, <span>but this part is in a span.</span></p>
+										</div>
+										<div style="border: 1px solid black" class="not-special"> This is a div with class not-special <br />
+											<h1 class="colorful"> This is a h1 with class "colorful" </h1> <br />
+											<p> This is another classless p</p>
+										</div>
+										<div style="text-align: center;">
+											<textarea id="custom-css" rows="10" cols="50" style="margin-left: auto; margin-right: auto; margin-top: 10px; margin-bottom: 10px;"></textarea>
+											<input type="button" id="custom-css-btn" value="Add CSS!" style="clear: both;" onclick="customCSS('#custom-css');"/>
+										</div>
+									</div>
+									<div class="col-md-12 slide-out" id="css-selectors">
+										<table class="ex-table">
+											<tr>
+												<th class="name-col">Selector</th>
+												<th class="desc-col">Usage</th>
+												<th class="ex-col">Example (Copy and try it out above!)</th>
+											</tr>
+											<tr>
+												<td> p </td>
+												<td> Generally, a selector with no spaces or special characters will affect every tag of the given type. For example, this selector will affect all paragraph elements.</td>
+												<td>
+													<textarea readonly rows="3">p {
+	color: blue;
+}</textarea>
+												</td>
+											</tr>
+											<tr>
+												<td> .colorful </td>
+												<td> A selector starting with a dot will select all elements with the given class. For instance, this selector will affect the elements with class "colorful" </td>
+												<td>
+													<textarea readonly rows="3">.colorful {
+	color: blue;
+}</textarea>
+												</td>
+											</tr>
+											<tr>
+												<td> #special </td>
+												<td> A selector starting with a # sign will select the element with the given id. NOTE THAT IDs SHOULD BE UNIQUE. </td>
+												<td><textarea readonly rows="3" cols="25">#special {
+	background-color: white;
+} </textarea></td>
+											</tr>
+											<tr>
+												<td> div h1 </td>
+												<td> A selector with a space, like the one above, will select elements of the second type that are "descendants of" elements of the first type. </td>
+												<td><textarea readonly rows="3" cols="20">#special span, div h1 {
+	color: blue;
+}</textarea></td>
+											</tr>
+											<tr>
+												<td> div&gt;h1 </td>
+												<td> A selector with a &gt; sign will select elements of the second type that are direct children of elements of the first type.</td>
+												<td><textarea rows="6" cols="25"> div>h1, #special>span {
+	/* Note that with this
+	selector, the span in 
+	the p is not colored */
+	color: blue;
+}</textarea></td>
+											</tr>
+											<tr>
+												<td> h1+p </td>
+												<td> A selector with a plus sign will select elements of the second type that immediately follow elements of the first type. </td>
+												<td><textarea readonly rows="3"> h1+p {
+	color: blue;
+}</textarea></td>
+											</tr>
+										</table>
+									</div>
+									<div class="col-md-12 slide-out" id="css-properties">
+										<table class="ex-table">
+											<tr>
+												<th class="name-col">Property</th>
+												<th class="desc-col">Usage</th>
+												<th class="ex-col">Example (Copy and try it out above!)</th>
+											</tr>
+											<tr>
+												<td> color </td>
+												<td> Used to set the color of text. </td>
+												<td>
+													<textarea readonly rows="3">.colorful {
+	color: blue;
+}</textarea>
+												</td>
+											</tr>
+											<tr>
+												<td> background-color</td>
+												<td> Used to set the background color of the tag. </td>
+												<td><textarea readonly rows="3" cols="25">.colorful{
+	background-color: green;
+}</textarea></td>
+											</tr>
+											<tr>
+												<td> margin/padding </td>
+												<td> Used for spacing different elements. Note that padding is inside the border, and margin is outside. </td>
+												<td><textarea readonly rows="4" cols="25">#special{
+	margin-bottom: 5px;
+	padding-bottom: 2px;
+}</textarea></td>
+											</tr>
+											<tr>
+												<td> text-align </td>
+												<td> Used to set the alignment of the text to the left, right, or center. </td>
+												<td><textarea readonly rows="3" cols="20">.colorful{
+	text-align: right;
+}</textarea></td>
+											</tr>
+											<tr>
+												<td> float/clear </td>
+												<td> Used to help position elements on a page. The example may help you understand. Basically, float allows you to tell an element where to align itself, and clear tells non-floating elements how to  </td>
+												<td><textarea readonly rows="10" cols="20">/* Experiment with
+changing clear to
+"left", "right", or 
+"both"! */
+div.not-special{
+	clear: right;
+}
+#special{
+	float: left;
+}
+</textarea></td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="row" id="js-row">
+								<div class="col-md-12">
+									<div class="row section-header" id="js-head">
+										<div class="col-md-12">
+											Javascript
+										</div>
+									</div>
+									<div class="row section-content" id="js-content">
+
+									</div>
+								</div>
+							</div>
+						</div>
+<!--
+			<table id="main-table">
+				<tr id="html-row">
+					<td>
+						<div class="row">
+					<div class="col-md-12 section-header" id="html-head">
+						HTML
+					</div>
+					<div class="col-md-12 section-content" id="html-content">
+						<table id="html-table">
+							<tr>
+								<th>
+									<div class="col-md-3">Template for HTML code</div>
+								</th>
+							</tr>
+							<tr>
+								<td>
+									<div class="col-md-3"><pre id="html-template"></pre></div>
+								</td>
+							</tr>	
+						</table>
+						</div>
+					</div>
+					</td>
+				</tr>
+				<tr id="css-row">
+					<td>
+						<div class="col-md-12 section-header" id="css-head">
+						CSS
+						</div>
+						<div class="col-md-12 section-content" id="css-content">
+
+						</div>
+					</td>
+				</tr>
+				<tr id="js-row">
+					<td>
+						<div class="col-md-12 section-header" id="js-head">
+						Javascript
+						</div>
+						<div class="col-md-12 section-content" id="js-content">
+
+						</div>
+					</td>
+				</tr>
+			</table -->
+		</div>
+	</div>
+</body>
+</html>

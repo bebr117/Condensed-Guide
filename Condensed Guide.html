@@ -89,6 +89,11 @@
 		$('#custom-style').html($(thing).val());
 	}
 
+	function customJS(thing, output){
+		eval("function f(){"+$(thing).val()+"}");
+		$(output).html(f());
+	}
+
 	$(document).ready(function(){
 		$("#html-template-code").text(
 			"<!DOCTYPE HTML>"+
@@ -239,7 +244,7 @@
 									</div>
 									<div class="row table-header col-md-12" id="css-info-titles">
 										<div class="col-md-4" btn="css-sample-code"> Sample HTML </div>
-										<div class="col-md-4" btn="css-sample-code css-selectors"> CSS selectors </div></a>
+										<div class="col-md-4" btn="css-sample-code css-selectors"> CSS selectors </div>
 										<div class="col-md-4" btn="css-sample-code css-properties"> Useful CSS properties </div>
 									</div>
 									<div class="col-md-12 slide-out" id="css-sample-code" style="margin: 5px;">
@@ -379,7 +384,19 @@ div.not-special{
 										</div>
 									</div>
 									<div class="row section-content" id="js-content">
-
+											<div class="col-md-12" id="js-description">
+												<p class="descriptor"><b>Javascript</b> is a scripting language that allows HTML pages to be interactive.</p>
+											</div>
+											<div class="row table-header col-md-12" id="js-info-titles">
+												<div class="col-md-4" btn="js-evaluator"> Test out your understanding of javascript! </div>
+												<div class="col-md-4" btn="js-evaluator js-basics"> Scripting basics </div>
+												<div class="col-md-4" btn="js-evaluator js-jquery"> jQuery basics </div>
+											</div>
+											<div class="col-md-12 slide-out" id="js-evaluator" style="text-align: center; border-bottom: 2px dashed black; padding-bottom: 10px; margin-bottom: 10px;">
+												<textarea id="custom-js" rows="10" cols="50" style="margin-left: auto; margin-right: auto; margin-top: 10px; margin-bottom: 10px;">// Use a return statement to write stuff below!</textarea>
+												<input type="button" id="custom-js-btn" value="Test Javascript!" style="clear: both; margin-bottom: 5px;" onclick="customJS('#custom-js', '#output');"/>
+												<div id="output"> Output will appear here. </div>
+											</div>
 									</div>
 								</div>
 							</div>

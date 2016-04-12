@@ -90,8 +90,8 @@
 	}
 
 	function customJS(thing, output){
-		eval("function f(){"+$(thing).val()+"}");
-		$(output).html(f());
+		eval("function pleasedontusethisfnname(){"+$(thing).val()+"}");
+		$(output).html(pleasedontusethisfnname());
 	}
 
 	$(document).ready(function(){
@@ -386,16 +386,76 @@ div.not-special{
 									<div class="row section-content" id="js-content">
 											<div class="col-md-12" id="js-description">
 												<p class="descriptor"><b>Javascript</b> is a scripting language that allows HTML pages to be interactive.</p>
+												<br />
+												<p>This section will assume a basic understanding of programming. If you have no experience, Python is a good starting point.</p>
 											</div>
 											<div class="row table-header col-md-12" id="js-info-titles">
 												<div class="col-md-4" btn="js-evaluator"> Test out your understanding of javascript! </div>
 												<div class="col-md-4" btn="js-evaluator js-basics"> Scripting basics </div>
-												<div class="col-md-4" btn="js-evaluator js-jquery"> jQuery basics </div>
+												<div class="col-md-4" btn="js-evaluator js-jquery css-sample-code"> jQuery basics </div>
 											</div>
 											<div class="col-md-12 slide-out" id="js-evaluator" style="text-align: center; border-bottom: 2px dashed black; padding-bottom: 10px; margin-bottom: 10px;">
 												<textarea id="custom-js" rows="10" cols="50" style="margin-left: auto; margin-right: auto; margin-top: 10px; margin-bottom: 10px;">// Use a return statement to write stuff below!</textarea>
 												<input type="button" id="custom-js-btn" value="Test Javascript!" style="clear: both; margin-bottom: 5px;" onclick="customJS('#custom-js', '#output');"/>
 												<div id="output"> Output will appear here. </div>
+											</div>
+											<div class="col-md-12 slide-out" id="js-basics">
+												<table class="ex-table">
+													<tr>
+														<th class="name-col"> Notion </th>
+														<th class="desc-col"> Implementation </th>
+														<th class="ex-col"> Example (Try it out above!)</th>
+													</tr>
+													<tr>
+														<td> Variables </td>
+														<td> Declaring variables before they're used is technically not required in javascript, but doing so with the
+															"var" keyword is recommended. Variables not declared with var will be considered to have global scope.</td>
+														<td><textarea readonly rows="6" cols="30"> function f(){
+	var a = 1;
+	b = 2;
+}
+f();
+return (typeof a !== undefined) + " " + (typeof b !== undefined);</textarea>
+<!-- TODO fix --></td>
+													</tr>
+													<tr>
+														<td> Objects </td>
+														<td> Objects can be defined in two ways: using object notation, or using a prototype constructor.
+															Object notation looks like a python dictionary, except functions are allowed to be values.
+															Constructors, on the other hand, are just functions that sometimes use "this" to define properties. </td>
+														<td><textarea readonly rows="9" cols="40">var brian = {name: "Brian Reinhart", grade: "A+"};
+function Person(name, grade){
+	this.name = name;
+	this.grade = grade;
+}
+var notBrian = new Person("Not Brian Reinhart", "F-");
+var output = brian.name+" has a grade of "+brian.grade;
+output+"\n"+notBrian.name+" has a grade of "+notBrian.grade;
+return output;</textarea></td>
+												</table>
+											</div>
+											<div class="col-md-12 slide-out" id="js-jquery">
+												<table class="ex-table">
+													<tr>
+														<th class="name-col"> Code </th>
+														<th class="desc-col"> Usage </th>
+														<th class="ex-col"> Example </th>
+													</tr>
+													<tr>
+														<td> Selectors ($("???"))</td>
+														<td> Selectors in jQuery are just like selectors in CSS, but you're able to call a wide variety of javascript and jQuery functions on them. </td>
+														<td><textarea readonly rows="3" cols="20"> var x = $(".colorful");
+x.fadeOut(1000);
+x.fadeIn(2000);</textarea></td>
+													</tr>
+													<tr>
+														<td> .attr('href') </td>
+														<td> Gets (or sets) an attribute of an element -- in this example, the href attribute. </td>
+														<td><textarea readonly rows="3" cols="35"> var x = $("#special");
+x.attr('isSpecial', 'true');
+return (x.attr('isSpecial') == 'true');</textarea></td>
+														</tr>
+												</table>
 											</div>
 									</div>
 								</div>
